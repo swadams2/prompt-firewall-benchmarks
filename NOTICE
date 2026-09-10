@@ -1,0 +1,31 @@
+Third-Party Attribution
+=======================
+
+`benchmarks/garak_transforms.py` reimplements a subset of the text-encoding
+transforms used by NVIDIA/garak's `garak/probes/encoding.py` encoding-probe
+family (base16/hex, base32, ascii85, raw hex, uuencode, ROT13, atbash, morse,
+NATO phonetic, and Unicode tag-character smuggling), independently
+reimplemented in Python's standard library against the behavior documented in
+garak's source rather than copied verbatim, to avoid taking on garak's own
+runtime/plugin-loading dependencies for a handful of stateless functions.
+
+Source: https://github.com/NVIDIA/garak (branch main, ~v0.17.0, fetched
+2026-09-09), licensed under the Apache License, Version 2.0. A copy of that
+license is at LICENSES/Apache-2.0.txt.
+
+Two benign, non-injection payload strings from garak's
+`garak/data/payloads/encoded.json` are reused verbatim in
+`corpus/evasion_corpus_v1.jsonl` (entries tagged `source: "garak:..."`,
+`technique: "high_perplexity_benign"`) as negative/false-positive-rate test
+cases, under the same Apache-2.0 terms.
+
+Not reused: garak's own payload strings for injection-adjacent content
+(`text_en.json` etc. — different threat model, would be a category error as
+"malicious" ground truth here) and `slur_terms_en.json` (excluded on content
+grounds; Apache-2.0 permits reuse but there is no reason to import it here).
+
+This project also depends on (not bundles) `prompt-firewall`
+(https://github.com/swadams2/prompt-firewall, private, all-rights-reserved,
+same author) and, via prompt-firewall's `classifier` extra, on
+meta-llama/Llama-Prompt-Guard-2-22M (Llama 4 Community License) — see that
+project's own NOTICE for the full third-party attribution chain.

@@ -1,0 +1,30 @@
+[project]
+name = "prompt-firewall-benchmarks"
+version = "0.1.0"
+description = "Versioned evasion-case corpus and scorer comparing prompt-firewall against raw Prompt Guard 2"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+dependencies = [
+    # Pinned to a commit SHA, not a tag, per prompt-firewall's own README guidance on
+    # pinning anything security-sensitive -- this is exactly that context.
+    "prompt-firewall[classifier] @ git+https://github.com/swadams2/prompt-firewall.git@9d49cf52cb63442de1dadfea49dd6573aa002f99",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "basedpyright"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["benchmarks"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

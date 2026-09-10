@@ -1,0 +1,7 @@
+# Corpus files must check out byte-for-byte identical regardless of a
+# cloning user's core.autocrlf setting -- an LF->CRLF rewrite wouldn't
+# corrupt the deliberate Unicode content (zero-width/bidi chars aren't
+# newlines), but it would silently change the file's bytes/hash across
+# clones, defeating "versioned, immutable" corpus files. Same lesson as
+# prompt-firewall's own en_core_web_md CRLF fix (2026-09-08).
+corpus/*.jsonl -text
