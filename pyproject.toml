@@ -7,7 +7,7 @@ license = { file = "LICENSE" }
 dependencies = [
     # Pinned to a commit SHA, not a tag, per prompt-firewall's own README guidance on
     # pinning anything security-sensitive -- this is exactly that context.
-    "prompt-firewall[classifier] @ git+https://github.com/swadams2/prompt-firewall.git@9d49cf52cb63442de1dadfea49dd6573aa002f99",
+    "prompt-firewall[classifier] @ git+https://github.com/swadams2/prompt-firewall.git@4918b573e7ff89e95023e5eba6be8cc088527638",
 ]
 
 [project.optional-dependencies]
