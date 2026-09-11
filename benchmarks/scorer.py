@@ -47,12 +47,12 @@ def _source_bucket(source: str) -> str:
 
 
 def build_tables(
-    corpus: list[JsonRecord], raw: dict[str, JsonRecord], wrapper: dict[str, JsonRecord]
+    corpus_path: str, corpus: list[JsonRecord], raw: dict[str, JsonRecord], wrapper: dict[str, JsonRecord]
 ) -> str:
     lines: list[str] = []
     lines.append("# prompt-firewall vs. raw Prompt Guard 2 -- evasion corpus results\n")
     lines.append(
-        f"Corpus: `corpus/evasion_corpus_v1.jsonl`, {len(corpus)} cases "
+        f"Corpus: `{corpus_path}`, {len(corpus)} cases "
         f"({sum(1 for c in corpus if c['label'] == 'malicious')} malicious / "
         f"{sum(1 for c in corpus if c['label'] == 'benign')} benign).\n"
     )
@@ -172,7 +172,7 @@ def main(corpus_path: str, raw_path: str, wrapper_path: str) -> None:
     if missing:
         print(f"ERROR: {len(missing)} corpus ids missing from results: {missing[:5]}...", file=sys.stderr)
         raise SystemExit(1)
-    sys.stdout.write(build_tables(corpus, raw, wrapper))
+    sys.stdout.write(build_tables(corpus_path, corpus, raw, wrapper))
 
 
 if __name__ == "__main__":

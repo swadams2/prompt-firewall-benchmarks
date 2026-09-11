@@ -29,3 +29,11 @@ text -- below even the `strict` profile's 0.1 threshold -- so no classifier-feed
 however complete, can catch it via any encoding. See `RESULTS.md`'s Limitations section for the
 full write-up. Not fixed in v1 (would require a new corpus version with a replacement
 trigger phrase and full re-review) -- left as a documented gap for a future version.
+
+**Confirmed to extend to ROT13/atbash specifically, 2026-09-10, re-scored against
+prompt-firewall v0.6.3.** v0.6.2 added ROT13/atbash fast-path detection (the last 2 of the 10
+garak-derived techniques still at 0% recall); v0.6.3 extended classifier-feed to them the same
+day. Re-scoring confirmed the identical pattern as the other 8 encodings: `fast_path` cases now
+caught (recall 0% -> 50% each), `classifier` cases still uncaught, same 0.047-plaintext-score
+root cause. Overall wrapper recall 67% -> 71%; garak-derived source recall 40% -> 50%. See
+`RESULTS.md`'s Limitations section.
