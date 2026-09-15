@@ -24,9 +24,8 @@ nodejs-wheel-binaries==24.19.0
 numpy==2.5.3
 packaging==26.3
 pluggy==1.6.0
-prompt-firewall @ git+https://github.com/swadams2/prompt-firewall.git@9d49cf52cb63442de1dadfea49dd6573aa002f99
-# Editable Git install with no remote (prompt-firewall-benchmarks==0.1.0)
--e c:\users\swada\hal\hal-skeleton\code\prompt-firewall-benchmarks
+prompt-firewall @ git+https://github.com/swadams2/prompt-firewall.git@30d2c043f24064ed69065466f00ab048dca89456
+-e git+https://github.com/swadams2/prompt-firewall-benchmarks.git@a965b6c20300f79d9e3aeaec99e3df96c9767390#egg=prompt_firewall_benchmarks
 Pygments==2.21.0
 pytest==9.1.1
 PyYAML==6.0.3
